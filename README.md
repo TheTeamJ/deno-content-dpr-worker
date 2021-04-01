@@ -1,3 +1,3 @@
-# content-dpr-worker
+# deno-content-dpr-worker
 
 
