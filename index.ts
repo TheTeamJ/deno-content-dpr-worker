@@ -19,7 +19,8 @@ async function handleRequest(srcUrl: string) {
       return res
     }
 
-    console.log("####", Buffer)
+    console.log("####", Deno.Buffer)
+    console.log("####", Deno)
     const buf: any = Buffer.from(await res.arrayBuffer())
     const { width, height, dpi } = await parsePngFormat(buf)
 
