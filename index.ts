@@ -1,4 +1,5 @@
 import { parsePngFormat } from 'https://raw.githubusercontent.com/daiiz/deno-png-dpi-reader-writer/master/mod.ts'
+const { Buffer } = Deno
 
 async function handleRequest(srcUrl: string) {
   if (!srcUrl) {
@@ -18,7 +19,7 @@ async function handleRequest(srcUrl: string) {
       return res
     }
 
-    const buf: any = new Deno.Buffer(await res.arrayBuffer())
+    const buf: any = Buffer.from(await res.arrayBuffer())
     const { width, height, dpi } = await parsePngFormat(buf)
 
     const headers: any = {
