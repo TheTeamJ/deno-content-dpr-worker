@@ -1,4 +1,3 @@
-// import { parsePngFormat } from 'https://raw.githubusercontent.com/daiiz/deno-png-dpi-reader-writer/master/mod.ts'
 import { parsePngFormat } from 'https://raw.githubusercontent.com/daiiz/deno-png-dpi-reader-writer/master/reader_.ts'
 
 async function handleRequest(srcUrl: string) {
@@ -21,7 +20,7 @@ async function handleRequest(srcUrl: string) {
 
     const data: Uint8Array = await res.arrayBuffer()
     const { width, height, dpi } = await parsePngFormat(data)
-    console.log('>>>>', data, width, dpi)
+    console.log('&&&&', data, width, dpi)
     const headers: any = {
       'Access-Control-Allow-Origin': '*',
       'Content-DPR': dpi && dpi >= 72 ? dpi / 72 : 1,
@@ -32,7 +31,6 @@ async function handleRequest(srcUrl: string) {
       headers['X-Height'] = height
       headers['Access-Control-Expose-Headers'] = 'X-Width, X-Height'
     }
-
     return new Response(data, { headers })
   } catch (err) {
     console.error(err)
