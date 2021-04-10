@@ -21,7 +21,7 @@ async function handleRequest(srcUrl: string) {
 
     const data: Uint8Array = await res.arrayBuffer()
     const { width, height, dpi } = await parsePngFormat(data)
-    console.log('>>>>', data, dpi)
+    console.log('>>>>', data, width, dpi)
     const headers: any = {
       'Access-Control-Allow-Origin': '*',
       'Content-DPR': dpi && dpi >= 72 ? dpi / 72 : 1,
@@ -33,7 +33,7 @@ async function handleRequest(srcUrl: string) {
       headers['Access-Control-Expose-Headers'] = 'X-Width, X-Height'
     }
 
-    return new Response(buf, { headers })
+    return new Response(data, { headers })
   } catch (err) {
     console.error(err)
   }
