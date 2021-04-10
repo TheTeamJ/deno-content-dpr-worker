@@ -46,11 +46,6 @@ async function handleRequest(srcUrl: string) {
   return res
 }
 
-// const main = async () => {
-//   const res = await handleRequest('https://i.gyazo.com/7127a0c2a987ea50dbba0ebd6455c206.png')
-//   console.log(res)
-// }
-
 addEventListener('fetch', event => {
   const req = event.request
   const params = (new URL(req.url)).searchParams
