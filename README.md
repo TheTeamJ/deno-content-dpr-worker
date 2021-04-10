@@ -1,4 +1,12 @@
 # deno-content-dpr-worker
 
-https://png-content-dpr.deno.dev/?src=https://i.gyazo.com/7127a0c2a987ea50dbba0ebd6455c206.png
 
+## Examples
+
+https://png-content-dpr.deno.dev/?src=https://raw.githubusercontent.com/TheTeamJ/deno-content-dpr-worker/main/sample/retina_menubar.png
+
+![](https://png-content-dpr.deno.dev/?src=https://raw.githubusercontent.com/TheTeamJ/deno-content-dpr-worker/main/sample/retina_menubar.png)
+
+https://png-content-dpr.deno.dev/?src=https://raw.githubusercontent.com/TheTeamJ/deno-content-dpr-worker/main/sample/retina_pancake.png
+
+![](https://raw.githubusercontent.com/TheTeamJ/deno-content-dpr-worker/main/sample/retina_pancake.png)
