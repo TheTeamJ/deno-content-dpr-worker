@@ -1,4 +1,5 @@
-import { parsePngFormat } from 'https://raw.githubusercontent.com/daiiz/deno-png-dpi-reader-writer/master/mod.ts'
+// import { parsePngFormat } from 'https://raw.githubusercontent.com/daiiz/deno-png-dpi-reader-writer/master/mod.ts'
+import { parsePngFormat } from 'https://raw.githubusercontent.com/daiiz/deno-png-dpi-reader-writer/no-use-denobuffer/reader_.ts'
 
 async function handleRequest(srcUrl: string) {
   if (!srcUrl) {
