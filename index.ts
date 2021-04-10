@@ -1,5 +1,4 @@
-import { parsePngFormat } from 'https://raw.githubusercontent.com/daiiz/deno-png-dpi-reader-writer/master/mod.ts'
-const { Buffer } = Deno
+import { parsePngFormat } from 'https://raw.githubusercontent.com/daiiz/deno-png-dpi-reader-writer/master/reader_.ts'
 
 async function handleRequest(srcUrl: string) {
   if (!srcUrl) {
@@ -19,15 +18,9 @@ async function handleRequest(srcUrl: string) {
       return res
     }
 
-    console.log("####", Deno.Buffer)
-    console.log("####", Deno)
-    console.log("###", Buffer)
-    // const buf: any = Buffer.from(await res.arrayBuffer())
-    const buf: any = await res.blob()
-    console.log("???", buf)
-    const { width, height, dpi } = await parsePngFormat(buf)
-
-    const headers: any = {
+    const data: ArrayBuffer = await res.arrayBuffer()
+    const { width, height, dpi } = await parsePngFormat(new Uint8Array(data))
+    const headers = {
       'Access-Control-Allow-Origin': '*',
       'Content-DPR': dpi && dpi >= 72 ? dpi / 72 : 1,
       'Content-Type': 'image/png',
@@ -37,8 +30,7 @@ async function handleRequest(srcUrl: string) {
       headers['X-Height'] = height
       headers['Access-Control-Expose-Headers'] = 'X-Width, X-Height'
     }
-
-    return new Response(buf, { headers })
+    return new Response(data, { headers })
   } catch (err) {
     console.error(err)
   }
