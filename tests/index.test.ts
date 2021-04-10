@@ -7,6 +7,8 @@ const imageUrls = {
 
 Deno.test('"Content-DPR" is included in response headers.', async () => {
   const res = await handleRequest(imageUrls.retina)
+  assertEquals(res.ok, true)
+
   const headers = res.headers
   assertEquals(headers.get('Content-DPR'), '2')
   assertEquals(headers.get('X-Width'), '1102')
