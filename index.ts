@@ -18,10 +18,9 @@ async function handleRequest(srcUrl: string) {
       return res
     }
 
-    const data: Uint8Array = await res.arrayBuffer()
-    const { width, height, dpi } = await parsePngFormat(data)
-    console.log('&&&&', data, width, dpi)
-    const headers: any = {
+    const data: ArrayBuffer = await res.arrayBuffer()
+    const { width, height, dpi } = await parsePngFormat(new Uint8Array(data))
+    const headers = {
       'Access-Control-Allow-Origin': '*',
       'Content-DPR': dpi && dpi >= 72 ? dpi / 72 : 1,
       'Content-Type': 'image/png',
